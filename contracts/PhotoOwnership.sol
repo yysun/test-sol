@@ -50,4 +50,8 @@ contract PhotoOwnership is Photo, ERC721 {
         address owner = ownerOf(_tokenId);
         _transfer(owner, msg.sender, _tokenId);
     }
+
+    function getBalance() public view returns(uint) {
+        return this.balance;
+    }
 }
