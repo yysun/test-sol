@@ -1,9 +1,9 @@
 pragma solidity ^0.4.19;
 
-import "./ownable.sol";
-import "./safemath.sol";
+import "./Ownable.sol";
+import "./Safemath.sol";
 
-contract PhotoContract is Ownable {
+contract Photo is Ownable {
 
     using SafeMath for uint256;
     using SafeMath32 for uint32;
@@ -22,7 +22,7 @@ contract PhotoContract is Ownable {
     mapping (address => uint) ownerPhotoCount;
 
     function createPhoto(string _title, uint _value) public {
-        uint id = photos.push(Photo(_title, value)) - 1;
+        uint id = photos.push(Photo(_title, _value)) - 1;
         photoToOwner[id] = msg.sender;
         ownerPhotoCount[msg.sender] = ownerPhotoCount[msg.sender].add(1);
         NewPhoto(id, _title, _value);

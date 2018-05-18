@@ -1,11 +1,11 @@
 pragma solidity ^0.4.19;
 
-import "./photo.sol";
-import "./erc721.sol";
-import "./safemath.sol";
+import "./Photo.sol";
+import "./ERC721.sol";
+import "./Safemath.sol";
 
 /// TODO: Replace this with natspec descriptions
-contract PhotoOwnership is PhotoContract, ERC721 {
+contract PhotoOwnership is Photo, ERC721 {
 
     using SafeMath for uint256;
 
@@ -39,7 +39,7 @@ contract PhotoOwnership is PhotoContract, ERC721 {
         _transfer(msg.sender, _to, _tokenId);
     }
 
-    function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) payable {
+    function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
         require(msg.value == photos[_tokenId].value);
         photoApprovals[_tokenId] = _to;
         Approval(msg.sender, _to, _tokenId);
