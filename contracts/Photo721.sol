@@ -5,7 +5,7 @@ import "./ERC721.sol";
 import "./Safemath.sol";
 
 /// TODO: Replace this with natspec descriptions
-contract PhotoOwnership is Photo, ERC721 {
+contract Photo721 is Photo, ERC721 {
 
     using SafeMath for uint256;
 
@@ -40,7 +40,6 @@ contract PhotoOwnership is Photo, ERC721 {
     }
 
     function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
-        require(msg.value == photos[_tokenId].value);
         photoApprovals[_tokenId] = _to;
         Approval(msg.sender, _to, _tokenId);
     }
@@ -50,8 +49,9 @@ contract PhotoOwnership is Photo, ERC721 {
         address owner = ownerOf(_tokenId);
         _transfer(owner, msg.sender, _tokenId);
     }
-
-    function getBalance() public view returns(uint) {
-        return this.balance;
+    
+    function pay(address _to, uint256 _tokenId) public payable {
+        require(msg.value == photos[_tokenId].value);
+        approve(_to, _tokenId);
     }
 }
