@@ -7,11 +7,16 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
+    test: {
+      host: "127.0.0.1",
+      port: 32791,
+      network_id: "*", // Match any network id
+      gas: 4712387
+    },
     live: {
       host: "127.0.0.1",
       port: 7545,
-      network_id: "*", // Match any network id
-      gas: 4712387,
-    },
+      network_id: "*" // Match any network id
+    }
   }
 };
