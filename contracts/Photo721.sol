@@ -6,7 +6,6 @@ import "./Safemath.sol";
 
 /// TODO: Replace this with natspec descriptions
 contract Photo721 is Photo, ERC721 {
-
     using SafeMath for uint256;
 
     mapping (uint => address) photoApprovals;
@@ -17,7 +16,7 @@ contract Photo721 is Photo, ERC721 {
     }
 
     function withdraw() external onlyOwner {
-        owner.transfer(this.balance);
+        owner.transfer(address(this).balance);
     }
 
     function balanceOf(address _owner) public view returns (uint256 _balance) {
@@ -32,7 +31,7 @@ contract Photo721 is Photo, ERC721 {
         ownerPhotoCount[_to] = ownerPhotoCount[_to].add(1);
         ownerPhotoCount[msg.sender] = ownerPhotoCount[msg.sender].sub(1);
         photoToOwner[_tokenId] = _to;
-        Transfer(_from, _to, _tokenId);
+        emit Transfer(_from, _to, _tokenId);
     }
 
     function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
@@ -41,7 +40,7 @@ contract Photo721 is Photo, ERC721 {
 
     function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
         photoApprovals[_tokenId] = _to;
-        Approval(msg.sender, _to, _tokenId);
+        emit Approval(msg.sender, _to, _tokenId);
     }
 
     function takeOwnership(uint256 _tokenId) public {
