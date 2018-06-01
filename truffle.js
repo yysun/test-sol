@@ -14,9 +14,10 @@ module.exports = {
     },
     test: {
       host: "127.0.0.1",
-      port: 32801,
+      port: 32845,
       network_id: "*", // Match any network id
-      gas: 4612388
+      from: "0xf18c1b17133f50d8ef854879b40188607b6e9361",
+      gas: 4700036
     }
   }
 };
