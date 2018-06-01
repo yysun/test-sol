@@ -1,8 +1,5 @@
-var SafeMath = artifacts.require("./SafeMath.sol");
-var PhotoOwnership = artifacts.require("./Photo721.sol");
+var SimpleStorage = artifacts.require("./SimpleStorage.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(SafeMath);
-  deployer.link(SafeMath, PhotoOwnership);
-  deployer.deploy(PhotoOwnership);
+  deployer.deploy(SimpleStorage);
 };
