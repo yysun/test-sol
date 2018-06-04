@@ -56,13 +56,13 @@ class App extends Component {
         simpleStorageInstance = instance
 
         // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(5, {from: accounts[0]})
+        return simpleStorageInstance.setImage("A-fluffy-cat-looking-funny-surprised-or-concerned.jpg", {from: accounts[0]})
       }).then((result) => {
         // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
+        return simpleStorageInstance.getImage.call(accounts[0])
       }).then((result) => {
         // Update state with the result.
-        return this.setState({ storageValue: result.c[0] })
+        return this.setState({ storageValue: result.toString() })
       })
     })
   }
