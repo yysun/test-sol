@@ -11,7 +11,7 @@ contract TestPhoto721 {
 
     photo721.setId("89");
 
-    string expected = "89";
+    string memory expected = "89";
 
     Assert.equal(photo721.getId(), expected, "It should store the id 89.");
   }
