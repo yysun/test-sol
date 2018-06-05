@@ -14,6 +14,7 @@ contract Photo is Ownable {
         string title;
         uint value;
     }
+    string tokenId;
 
     PhotoStruct[] public photos;
 
@@ -25,5 +26,13 @@ contract Photo is Ownable {
         photoToOwner[id] = msg.sender;
         ownerPhotoCount[msg.sender] = ownerPhotoCount[msg.sender].add(1);
         emit NewPhoto(id, _title, _value);
+    }
+
+    function setId(string id) public {
+        tokenId = id;
+    }
+
+    function getId() public view returns (string) {
+        return tokenId;
     }
 }

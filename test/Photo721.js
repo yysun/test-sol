@@ -8,4 +8,15 @@ contract('Photo721', function(accounts) {
       assert.equal(Photo721.valueOf(), 0, "0 wasn't in the first account");
     });
   });
+
+  it("should store the id 89.", function() {
+    return Photo721.deployed().then(function(instance) {
+      photo721Instance = instance;
+      return photo721Instance.setId("89", {from: accounts[0]});
+    }).then(function() {
+      return photo721Instance.getId.call();
+    }).then(function(storedData) {
+      assert.equal(storedData, "89", "The id 89 was not stored.");
+    });
+  });
 });
