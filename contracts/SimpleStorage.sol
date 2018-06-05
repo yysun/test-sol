@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 contract SimpleStorage {
   uint storedData;
-  string image;
+  string id;
   function set(uint x) public {
     storedData = x;
   }
@@ -11,11 +11,11 @@ contract SimpleStorage {
     return storedData;
   }
 
-  function setImage(string url) public {
-    image = url;
+  function setId(string identity) public {
+    id = identity;
   }
 
-  function getImage() public view returns (string) {
-    return image;
+  function getId() public view returns (string) {
+    return id;
   }
 }
