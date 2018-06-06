@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}\\dist/index.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "truffle test (debugable)",
             "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}\\node_modules/truffle-core/cli.js",
