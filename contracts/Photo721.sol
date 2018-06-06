@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.23;
 
 import "./Photo.sol";
 import "./ERC721.sol";
