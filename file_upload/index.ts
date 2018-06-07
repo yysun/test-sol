@@ -84,6 +84,6 @@ app.get('/images/:id', async (req, res) => {
     }
 })
 
-app.listen(3000, function () {
+app.listen(3100, function () {
     console.log('listening on port 3000!');
 })
